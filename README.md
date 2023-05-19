@@ -42,6 +42,5 @@
 ### Association
 
 - has_many  :comments
-- has_many  :user, through: :comments_users
 - has_many  :user
 
