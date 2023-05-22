@@ -18,10 +18,32 @@ class PrototypesController < ApplicationController
   end
 
   def show
-    # binding.pry
     @prototype = Prototype.find(params[:id])
   end
 
+<<<<<<< Updated upstream
+=======
+  def edit
+    @prototype = Prototype.find(params[:id])
+  end
+
+  def update
+    prototype = Prototype.find(params[:id])
+    if prototype.update(prototype_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    prototype = Prototype.find(params[:id])
+    prototype.destroy
+    redirect_to root_path
+  end
+
+
+>>>>>>> Stashed changes
   private
 
   def prototype_params
