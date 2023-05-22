@@ -21,8 +21,6 @@ class PrototypesController < ApplicationController
     @prototype = Prototype.find(params[:id])
   end
 
-<<<<<<< Updated upstream
-=======
   def edit
     @prototype = Prototype.find(params[:id])
   end
@@ -42,10 +40,7 @@ class PrototypesController < ApplicationController
     redirect_to root_path
   end
 
-
->>>>>>> Stashed changes
   private
-
   def prototype_params
     params.require(:prototype) .permit(:title, :catch_copy, :concept, :image).merge(user_id: current_user.id)
   end
