@@ -18,7 +18,6 @@ class PrototypesController < ApplicationController
   end
 
   def show
-    # binding.pry
     @prototype = Prototype.find(params[:id])
   end
 
@@ -28,10 +27,18 @@ class PrototypesController < ApplicationController
 
   def update
     prototype = Prototype.find(params[:id])
-    prototype.update(prototype_params)
-    redirect_to root_path
+    if prototype.update(prototype_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
+  def destroy
+    prototype = Prototype.find(params[:id])
+    prototype.destroy
+    redirect_to root_path
+  end
 
   private
   def prototype_params
