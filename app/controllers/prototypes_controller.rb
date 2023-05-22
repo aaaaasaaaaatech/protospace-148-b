@@ -17,6 +17,11 @@ class PrototypesController < ApplicationController
     end
   end
 
+  def show
+    # binding.pry
+    @prototype = Prototype.find(params[:id])
+  end
+
   private
 
   def prototype_params
