@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   end
   resources :prototypes
   resources :comments, only: :create
+  resources :users, only: :show
 end
