@@ -27,9 +27,9 @@ class PrototypesController < ApplicationController
 
   def edit
     @prototype = Prototype.find(params[:id])
-    unless user_signed_in? && current_user.id == @prototype.user_id
-      redirect_to action: :index
-    end
+    return if user_signed_in? && current_user.id == @prototype.user_id
+
+    redirect_to action: :index
   end
 
   def update
@@ -37,12 +37,11 @@ class PrototypesController < ApplicationController
     if prototype.update(prototype_params)
       redirect_to root_path
     else
-      flash[:notice] = "入力された情報に誤りがあります"
+      flash[:notice] = '入力された情報に誤りがあります'
       render :edit
     end
   end
 
-  
   def destroy
     prototype = Prototype.find(params[:id])
     prototype.destroy
@@ -50,11 +49,8 @@ class PrototypesController < ApplicationController
   end
 
   private
+
   def prototype_params
-    params.require(:prototype) .permit(:title, :catch_copy, :concept, :image).merge(user_id: current_user.id)
+    params.require(:prototype).permit(:title, :catch_copy, :concept, :image).merge(user_id: current_user.id)
   end
- 
- 
-
 end
-
